@@ -8,7 +8,7 @@ WORKDIR /data
 ENV UPDATE_FREQUENCY=0
 
 # copy the script.
-COPY update.sh /usr/local/bin/ipinfo.sh
+COPY ipinfo.sh /usr/local/bin/ipinfo.sh
 RUN chmod +x /usr/local/bin/ipinfo.sh
 
 # create the volume.
