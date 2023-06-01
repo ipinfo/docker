@@ -6,6 +6,7 @@ WORKDIR /data
 
 # set environment variable.
 ENV UPDATE_FREQUENCY=0
+ENV IPINFO_TOKEN='98266fdad56289'
 
 # copy the script.
 COPY ipinfo.sh /usr/local/bin/ipinfo.sh
