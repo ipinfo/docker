@@ -5,7 +5,7 @@
 ## Configuration
 `IPINFO_TOKEN` (optional) - Set you ipinfo token.
 
-`UPDATE_FREQUENCY` (optional) - Interval of updating database in bash sleep format 5, 5m, 1d. Default set to 0. 
+`UPDATE_FREQUENCY` (optional) - Interval of updating database in bash sleep format. If this is not set or is set to 0 (default), image will run once and exit.
 ## Usage:
 ```bash
 docker run -v <dir>:/data  \
@@ -13,7 +13,7 @@ docker run -v <dir>:/data  \
   -e UPDATE_FREQUENCY=<update_frequency> \
   ipinfo-db
 ```
-
+`<dir>` local directory that you want to download the databases to.
 ## Other IPinfo Tools
 
 There are official IPinfo client libraries available for many languages including PHP, Python, Go, Java, Ruby, and many popular frameworks such as Django, Rails and Laravel. There are also many third party libraries and integrations available for our API.
