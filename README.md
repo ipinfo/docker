@@ -2,6 +2,11 @@
 
 `ipinfo-db` is a docker image by [IPinfo.io](https://ipinfo.io) that downloads free country asn database in mmdb format.
 
+## Pull image
+```bash
+docker pull ipinfo/ipinfo-db:latest
+```
+
 ## Configuration
 
 `IPINFO_TOKEN` (optional) - Set you ipinfo token.
