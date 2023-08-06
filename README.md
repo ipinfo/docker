@@ -9,9 +9,9 @@ docker pull ipinfo/ipinfo-db:latest
 
 ## Configuration
 
-`IPINFO_TOKEN` (optional) - Set you ipinfo token.
-
-`UPDATE_FREQUENCY` (optional) - Interval of updating database in bash sleep format. If this is not set or is set to 0 (default), image will run once and exit.
+- `IPINFO_TOKEN` (optional) - Set you ipinfo token.
+- `IPINFO_DATABASES` (optional) - Databases to download, default to `country_asn`.
+- `UPDATE_FREQUENCY` (optional) - Interval of updating database in bash sleep format. If this is not set or is set to 0 (default), image will run once and exit.
 
 ## Usage:
 

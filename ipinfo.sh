@@ -1,14 +1,18 @@
 #!/bin/sh
 
 while true; do
-    # download the database.
-    RESPONSE=$(curl -s -w '%{http_code}' -L -o "country_asn.mmdb" "https://ipinfo.io/data/free/country_asn.mmdb?token=${IPINFO_TOKEN}")
-    if [ "$RESPONSE" != "200" ]; then
-        echo "$RESPONSE Failed to download database."
-        rm country_asn.mmdb
-    else
-        echo "country_asn.mmdb database downloaded in /data volume"
-    fi
+    for DATABASE in ${IPINFO_DATABASES}; do
+        RESPONSE=$(curl \
+            -s -w '%{http_code}' -L -o "${DATABASE}.mmdb.new" \
+            "https://ipinfo.io/data/free/${DATABASE}.mmdb?token=${IPINFO_TOKEN}")
+        if [ "$RESPONSE" != "200" ]; then
+            echo "$RESPONSE Failed to download ${DATABASE}.mmdb database."
+            rm "${DATABASE}.mmdb.new" 2> /dev/null
+        else
+            echo "${DATABASE}.mmdb database downloaded in /data volume."
+            mv "${DATABASE}.mmdb.new" "${DATABASE}.mmdb"
+        fi
+    done
     
     if [ $UPDATE_FREQUENCY == 0 ]; then
         break
