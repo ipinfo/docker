@@ -1,5 +1,7 @@
 #!/bin/sh
 
+trap exit TERM
+
 while true; do
     for DATABASE in ${IPINFO_DATABASES}; do
         RESPONSE=$(curl \
@@ -18,5 +20,6 @@ while true; do
         break
     fi
 
-    sleep "$UPDATE_FREQUENCY"
+    sleep "$UPDATE_FREQUENCY" &
+    wait $!
 done
