@@ -7,7 +7,7 @@ WORKDIR /data
 # set environment variable
 ENV UPDATE_FREQUENCY=0
 ENV IPINFO_TOKEN='my_ipinfo_token'
-ENV IPINFO_DATABASES='country_asn'
+ENV IPINFO_DATABASES='ipinfo_lite'
 
 # copy the script
 COPY ipinfo.sh /usr/local/bin/ipinfo.sh
