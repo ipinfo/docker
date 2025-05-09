@@ -1,6 +1,6 @@
 # [<img src="https://ipinfo.io/static/ipinfo-small.svg" alt="IPinfo" width="24"/>](https://ipinfo.io/) IPinfo Docker Image
 
-`ipinfo-db` is a docker image by [IPinfo.io](https://ipinfo.io) that downloads free country asn database in mmdb format.
+`ipinfo-db` is a docker image by [IPinfo.io](https://ipinfo.io) that downloads IPInfo databases (for info on what DBs are available, see [here](https://ipinfo.io/developers/database-filename-reference)).
 
 ## Pull image
 ```bash
@@ -9,8 +9,8 @@ docker pull ipinfo/ipinfo-db:latest
 
 ## Configuration
 
-- `IPINFO_TOKEN` (optional) - Set you ipinfo token.
-- `IPINFO_DATABASES` (optional) - Databases to download, default to `country_asn`.
+- `IPINFO_TOKEN` (required) - Set you IPInfo token available in your [dashboard](https://ipinfo.io/dashboard/token)
+- `IPINFO_DATABASES` (optional) - Space-separated list of databases to download. Defaults to `ipinfo_lite`.
 - `UPDATE_FREQUENCY` (optional) - Interval of updating database in bash sleep format. If this is not set or is set to 0 (default), image will run once and exit.
 
 ## Usage:
@@ -19,7 +19,7 @@ docker pull ipinfo/ipinfo-db:latest
 docker run -v <dir>:/data  \
   -e IPINFO_TOKEN=<ipinfo_token> \
   -e UPDATE_FREQUENCY=<update_frequency> \
-  ipinfo-db
+  ipinfo/ipinfo-db
 ```
 
 `<dir>` local directory that you want to download the databases to.
