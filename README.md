@@ -10,9 +10,13 @@ docker pull ipinfo/ipinfo-db:latest
 ## Configuration
 
 - `IPINFO_TOKEN` (required) - Set you IPInfo token available in your [dashboard](https://ipinfo.io/dashboard/token).
-- `IPINFO_DATABASES` (optional) - Space-separated list of databases to download. Defaults to `ipinfo_lite`.
+- `IPINFO_DATABASES` (optional) - Space-separated list of databases to download. **Notes**:  
+**(1)** The default value is set to `country_asn.mmdb` to ensure backwards compatibility with the previous version of the image, but we recommend using the newer `ipinfo_lite` database instead. The data provided by `ipinfo_lite` is the same as `country_asn`, but the schema has changed. See [here](https://github.com/ipinfo/docker/issues/9#issuecomment-2868624800) for more details.
 - `UPDATE_FREQUENCY` (optional) - Interval of updating database in bash sleep format. If this is not set or is set to `0` (default), image will run once and exit.
 - `DEFAULT_DB_FORMAT` (optional) - Default database format. Can be `mmdb`, `csv`, `json` or `parquet`. Defaults to `mmdb`.
+- `AUTO_EXTRACT_GZ` (optional) - If set to `true` or `1`, the downloaded files will be extracted from gzipped format. Defaults to `false`. **Notes**:  
+**(1)** This increases the storage requirements of downloaded files, as both th `.gz` file, and the extracted file will be stored in the same directory - this is to check the hash of the file on disk against the hash of the file on IPinfo's servers (and prevent re-downloading the same file).  
+**(2)** This variable is only relevant for `.csv` and `.json` files, as the `.mmdb` and `.parquet` files are not gzipped on IPinfo's servers.
 
 ## Usage:
 

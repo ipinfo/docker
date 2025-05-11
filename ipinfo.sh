@@ -80,6 +80,22 @@ while true; do
         else
             echo "${DATABASE} database downloaded in /data volume."
             mv "${DATABASE}.new" "${DATABASE}"
+
+            # Check if automated extraction of GZ files is enabled
+            if [ "$AUTO_EXTRACT_GZ" = "1" ] || [ "$AUTO_EXTRACT_GZ" = "true" ]; then
+                # Check if the file is a GZ file
+                if [[ "${DATABASE}" == *.gz ]]; then
+                    # Extract the GZIP file (while keeping the original)
+                    gunzip -k "${DATABASE}"
+
+                    # Check if the extraction was successful
+                    if [ $? -eq 0 ]; then
+                        echo "Extracted ${DATABASE} to ${DATABASE%.gz}"
+                    else
+                        echo "Failed to extract ${DATABASE}"
+                    fi
+                fi
+            fi
         fi
     done
     
