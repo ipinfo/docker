@@ -9,9 +9,10 @@ docker pull ipinfo/ipinfo-db:latest
 
 ## Configuration
 
-- `IPINFO_TOKEN` (required) - Set you IPInfo token available in your [dashboard](https://ipinfo.io/dashboard/token)
+- `IPINFO_TOKEN` (required) - Set you IPInfo token available in your [dashboard](https://ipinfo.io/dashboard/token).
 - `IPINFO_DATABASES` (optional) - Space-separated list of databases to download. Defaults to `ipinfo_lite`.
-- `UPDATE_FREQUENCY` (optional) - Interval of updating database in bash sleep format. If this is not set or is set to 0 (default), image will run once and exit.
+- `UPDATE_FREQUENCY` (optional) - Interval of updating database in bash sleep format. If this is not set or is set to `0` (default), image will run once and exit.
+- `DEFAULT_DB_FORMAT` (optional) - Default database format. Can be `mmdb`, `csv`, `json` or `parquet`. Defaults to `mmdb`.
 
 ## Usage:
 
